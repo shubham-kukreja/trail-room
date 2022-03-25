@@ -5,3 +5,7 @@ input[type='search']::-webkit-search-results-button,
 input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
+
+.css-o69gx8-MuiCardMedia-root {
+  height: 400px !important;
+}

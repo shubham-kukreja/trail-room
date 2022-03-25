@@ -65,8 +65,10 @@ const Main = () => {
     if (alignment === 'right')
       listRef = ref(storage, `user_images/${id}/output/small_images/`)
     else listRef = ref(storage, `model_images/`)
-    const list: any = await listAll(listRef)
+    let list: any = await listAll(listRef)
     let array: String[] = []
+
+    list.items.sort()
 
     list.items.map(async (item: any) => {
       const getImageUrl = await getDownloadURL(
@@ -198,7 +200,7 @@ const Main = () => {
                 )}
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    {`Photo # ${index}`}
+                    {`Item # ${item.split('_tshirt')[0].slice(-3)}_tshirt`}
                   </Typography>
                   <Typography
                     variant='body2'
