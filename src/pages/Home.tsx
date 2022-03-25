@@ -1,4 +1,11 @@
-import { Box, Typography, TextField, Button } from '@mui/material'
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  ImageList,
+  ImageListItem
+} from '@mui/material'
 import { Link } from 'react-router-dom'
 import routes from './routes'
 import Wrapper from '../components/Wrapper'
@@ -7,6 +14,7 @@ import { useForm } from 'react-hook-form'
 import formErrorMessages from '../utils/formErrorMessages'
 import { useState } from 'react'
 import Database from '../types/Database'
+import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 
 const Home = () => {
   const {
@@ -17,6 +25,18 @@ const Home = () => {
   } = useForm<{ name: string }>()
 
   const [todos, setTodos] = useState<Database.Todo[]>([])
+
+  const [imageURL, setImageURL] = useState<String>()
+
+  const test = async () => {
+    const storage = getStorage()
+
+    const getImageUrl = await getDownloadURL(
+      ref(storage, 'model_images/render22.png')
+    )
+
+    setImageURL(getImageUrl)
+  }
 
   return (
     <>
@@ -78,6 +98,10 @@ const Home = () => {
           />
           <Button type='submit' color='primary'>
             Submit
+          </Button>
+
+          <Button color='primary' onClick={() => test()}>
+            Fuck U
           </Button>
         </form>
       </Wrapper>

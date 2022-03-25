@@ -1,6 +1,9 @@
 const routes = {
-  home: '/',
-  signin: '/signin'
+  home: '/home',
+  signin: '/signin',
+  main: '/',
+  scanner: '/scanner',
+  pc: '/pc'
 }
 
 export default routes
