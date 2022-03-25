@@ -2,6 +2,7 @@
   "name": "react-firebase-template",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shubham-kukreja.github.io/",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -31,6 +32,7 @@
     "@types/css-mediaquery": "^0.1.1",
     "@types/jest": "^27.4.0",
     "css-mediaquery": "^0.1.2",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.7",
     "mini-css-extract-plugin": "2.4.5",
@@ -50,7 +52,9 @@
     "analyze": "yarn build && source-map-explorer build/static/js/main.*",
     "ci": "CI=true yarn test && CI=true yarn build",
     "emulator:export": "yarn firebase emulators:export firestore_mock_data",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

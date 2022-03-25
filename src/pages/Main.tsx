@@ -64,7 +64,7 @@ const Main = () => {
     let listRef
     if (alignment === 'right')
       listRef = ref(storage, `user_images/${id}/output/small_images/`)
-    else listRef = ref(storage, `model_images/${id}/output/`)
+    else listRef = ref(storage, `model_images/`)
     const list: any = await listAll(listRef)
     let array: String[] = []
 
@@ -183,7 +183,7 @@ const Main = () => {
         {!showScanner &&
           imageURLs.map((item, index) => (
             <Card
-              sx={{ maxWidth: 345, marginBottom: 10 }}
+              sx={{ maxWidth: 345, marginBottom: 5 }}
               key={index}
               style={{ height: '500' }}
             >
@@ -198,13 +198,12 @@ const Main = () => {
                 )}
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    Lizard
+                    {`Photo # ${index}`}
                   </Typography>
-                  <Typography variant='body2' color='text.secondary'>
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
-                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='text.secondary'
+                  ></Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
