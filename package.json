@@ -2,7 +2,7 @@
   "name": "react-firebase-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shubham-kukreja.github.io/",
+  "homepage": "https://shubham-kukreja.github.io/trail-room/",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

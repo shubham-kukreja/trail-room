@@ -24,17 +24,25 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner'
 import CloseIcon from '@mui/icons-material/Close'
+import { useParams } from 'react-router'
 
 const QrReader = require('react-qr-scanner')
 
+interface Data {
+  url: String
+  name: String
+}
+
 const Main = () => {
-  const [imageURLs, setImageURLs] = useState<String[]>([])
+  const [imageURLs, setImageURLs] = useState<Data[]>([])
   const [comp, setComp] = useState([])
   const [number, setNumber] = useState(1)
   const [delay, setDelay] = useState(100)
   const [result, setResult] = useState('No Result')
   const [showScanner, setShowScanner] = useState(false)
   const [alignment, setAlignment] = useState('left')
+
+  let { qr } = useParams()
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -74,11 +82,17 @@ const Main = () => {
       const getImageUrl = await getDownloadURL(
         ref(storage, item._location.path_)
       )
-      setImageURLs(state => [...state, getImageUrl])
+      const httpsReference = ref(storage, getImageUrl)
+      const name = httpsReference.name
+      setImageURLs(state => [
+        ...state,
+        { url: getImageUrl, name: name.slice(0, -4).toUpperCase() }
+      ])
     })
   }
 
   useEffect(() => {
+    console.log(qr)
     fetchImages(localStorage.getItem('qr'))
   }, [alignment])
 
@@ -116,7 +130,10 @@ const Main = () => {
                 <RefreshIcon />
               </Button>
               <Button color='primary'>
-                <QrCodeScannerIcon onClick={() => setShowScanner(true)} />
+                <QrCodeScannerIcon
+                  style={{ color: localStorage.getItem('qr') ? 'green' : '' }}
+                  onClick={() => setShowScanner(true)}
+                />
               </Button>
             </div>
             <div>
@@ -177,6 +194,7 @@ const Main = () => {
                     setShowScanner(false)
                   }
                 }}
+                facingMode={'rear'}
               />
             </div>
           </div>
@@ -185,28 +203,48 @@ const Main = () => {
         {!showScanner &&
           imageURLs.map((item, index) => (
             <Card
-              sx={{ maxWidth: 345, marginBottom: 5 }}
+              sx={{ marginBottom: 5 }}
               key={index}
-              style={{ height: '500' }}
+              style={{
+                height: '900',
+                boxShadow:
+                  '0 10px 20px rgba(0,0,0,0.06), 0 6px 6px rgba(0,0,0,0.08)'
+              }}
             >
               <CardActionArea>
                 {alignment && (
                   <CardMedia
                     component='img'
                     height='140'
-                    image={`${item}`}
+                    image={`${item.url}`}
                     alt='green iguana'
                   />
                 )}
-                <CardContent>
+                <CardContent
+                  style={{ margin: 0, borderTop: '1px solid #2196f3' }}
+                >
                   <Typography gutterBottom variant='h5' component='div'>
-                    {`Item # ${item.split('_tshirt')[0].slice(-3)}_tshirt`}
+                    {item?.name}
                   </Typography>
-                  <Typography
-                    variant='body2'
-                    color='text.secondary'
-                  ></Typography>
+                  <Typography variant='body2' color='text.secondary'>
+                    A T-shirt, or tee shirt, is a style of fabric shirt named
+                    after the T shape of its body and sleeves.
+                  </Typography>
                 </CardContent>
+                <CardActions
+                  style={{
+                    padding: 10,
+                    paddingBottom: 15,
+                    textAlign: 'center'
+                  }}
+                >
+                  <Button variant='contained' size='large'>
+                    BUY NOW
+                  </Button>
+                  <Button variant='outlined' size='large'>
+                    ADD TO CART
+                  </Button>
+                </CardActions>
               </CardActionArea>
             </Card>
           ))}

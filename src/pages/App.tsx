@@ -9,6 +9,7 @@ import { sessionState } from '../state'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import Main from './Main'
 import PointCloud from './PointCloud'
+import ImageView from './ImageView'
 
 const App = () => {
   const setSession = useSetRecoilState(sessionState)
@@ -35,6 +36,9 @@ const App = () => {
       <Route path={routes.main} element={<Main />} />
       <Route path={routes.scanner} element={<Scanner />} />
       <Route path={routes.pc} element={<PointCloud />} />
+      <Route path={routes.image} element={<ImageView />} />
+
+      <Route path={routes.barcode} element={<Main />} />
 
       <Route path='*' element={<Navigate to={routes.main} />} />
     </Routes>
