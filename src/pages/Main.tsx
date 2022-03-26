@@ -92,7 +92,7 @@ const Main = () => {
   }
 
   useEffect(() => {
-    console.log(qr)
+    if (qr) localStorage.setItem('qr', qr)
     fetchImages(localStorage.getItem('qr'))
   }, [alignment])
 

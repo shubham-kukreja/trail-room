@@ -1,11 +1,11 @@
 const routes = {
   home: '/home',
   signin: '/signin',
-  main: '/main',
+  main: '/trail-room',
   scanner: '/scanner',
   image: '/view',
   pc: '/pc',
-  barcode: '/barcode/:qr'
+  barcode: '/trail-room/barcode/:qr'
 }
 
 export default routes
