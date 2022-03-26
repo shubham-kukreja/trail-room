@@ -5,7 +5,7 @@ const routes = {
   scanner: '/scanner',
   image: '/view',
   pc: '/pc',
-  barcode: '/trail-room/barcode/:qr'
+  barcode: '/barcode/:qr'
 }
 
 export default routes
