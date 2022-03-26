@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trail-room/static/css/main.872213f8.css",
-    "main.js": "/trail-room/static/js/main.8a676680.js",
+    "main.js": "/trail-room/static/js/main.793416eb.js",
     "service-worker.js": "/trail-room/service-worker.js",
     "static/media/roboto-latin-900italic.woff": "/trail-room/static/media/roboto-latin-900italic.c20d916c1a1b094c1cec.woff",
     "static/media/roboto-latin-300italic.woff": "/trail-room/static/media/roboto-latin-300italic.bd5b7a13f2c52b531a2a.woff",
@@ -29,10 +29,10 @@
     "static/media/roboto-latin-900.woff2": "/trail-room/static/media/roboto-latin-900.870c8c1486f76054301a.woff2",
     "index.html": "/trail-room/index.html",
     "main.872213f8.css.map": "/trail-room/static/css/main.872213f8.css.map",
-    "main.8a676680.js.map": "/trail-room/static/js/main.8a676680.js.map"
+    "main.793416eb.js.map": "/trail-room/static/js/main.793416eb.js.map"
   },
   "entrypoints": [
     "static/css/main.872213f8.css",
-    "static/js/main.8a676680.js"
+    "static/js/main.793416eb.js"
   ]
 }
